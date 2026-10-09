@@ -1,0 +1,130 @@
+{
+  "browser": "151.0.7922.34",
+  "version": "1.1.0",
+  "mockedAPI": true,
+  "extractionChecks": [
+    {
+      "name": "微信正文：保留段落、过滤隐藏内容与表单",
+      "pass": true
+    },
+    {
+      "name": "微信验证页：停止提取",
+      "pass": true
+    },
+    {
+      "name": "微信删除页：停止提取",
+      "pass": true
+    },
+    {
+      "name": "正文尚不可见：停止提取",
+      "pass": true
+    },
+    {
+      "name": "父元素隐藏：停止提取",
+      "pass": true
+    },
+    {
+      "name": "根元素隐藏：停止提取",
+      "pass": true
+    },
+    {
+      "name": "纯图片微信文章：提示补充文字",
+      "pass": true
+    },
+    {
+      "name": "正文提到验证：不会误识别为验证页",
+      "pass": true
+    },
+    {
+      "name": "一般文章：Readability正文过滤页面导航",
+      "pass": true
+    },
+    {
+      "name": "一般页面：不将整页文本作为降级正文",
+      "pass": true
+    },
+    {
+      "name": "微信链接移除跟踪参数",
+      "pass": true
+    }
+  ],
+  "checks": [
+    {
+      "check": "初始仅显示开始页",
+      "pass": true
+    },
+    {
+      "check": "工具栏自动采集，不调用模型且过滤隐藏内容",
+      "pass": true
+    },
+    {
+      "check": "缺Key跳转独立设置页",
+      "pass": true
+    },
+    {
+      "check": "设置返回保留文章，清空未保存Key",
+      "pass": true
+    },
+    {
+      "check": "保存并返回不发API",
+      "pass": true
+    },
+    {
+      "check": "自动进入结果页，六项评分平级，保留不确定项",
+      "pass": true
+    },
+    {
+      "check": "结果页设置往返保留结果",
+      "pass": true
+    },
+    {
+      "check": "实际Markdown下载不包含Key",
+      "pass": true
+    },
+    {
+      "check": "原文预览定位及真实源页高亮",
+      "pass": true
+    },
+    {
+      "check": "关闭或重新打开面板恢复结果",
+      "pass": true
+    },
+    {
+      "check": "分析另一篇保留Key和缓存，再分析命中缓存",
+      "pass": true
+    },
+    {
+      "check": "鉴权失败保留输入并显示可操作提示",
+      "pass": true
+    },
+    {
+      "check": "设置往返保留粘贴草稿",
+      "pass": true
+    },
+    {
+      "check": "分析中不重复采集，取消后旧请求不能覆盖新输入",
+      "pass": true
+    },
+    {
+      "check": "中英日及混合原文完成同一分析链路",
+      "pass": true
+    },
+    {
+      "check": "长文部分失败进入结果页并明确标记范围",
+      "pass": true
+    },
+    {
+      "check": "300/380/600px及长标题无横向溢出",
+      "pass": true
+    },
+    {
+      "check": "未授权新域名拒绝读取",
+      "pass": true
+    },
+    {
+      "check": "不可读取页面不会保留并误展示旧文章结果",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

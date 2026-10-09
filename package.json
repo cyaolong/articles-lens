@@ -1,0 +1,14 @@
+{
+  "name": "articles-lens",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:e2e": "node tests/browser/e2e.mjs",
+    "test:package": "node tests/browser/package-smoke.mjs",
+    "package": "python3 scripts/package.py"
+  },
+  "devDependencies": { "playwright": "1.62.1" }
+}

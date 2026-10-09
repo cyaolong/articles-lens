@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>文章透镜</title><link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <header class="masthead">
+    <span class="mark" aria-hidden="true">文</span><h1>文章透镜</h1>
+    <button id="settings-open" class="icon-button" aria-label="设置" type="button">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 3-1 3-3 1v4l2 1-2 2 1 3 3 1 1 3h4l1-3 3-1 1-3-2-2 2-1V7l-3-1-1-3Z"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+  </header>
+  <main>
+    <section id="start-page" class="page" aria-labelledby="start-heading">
+      <h2 id="start-heading" tabindex="-1">分析一篇文章</h2>
+      <div id="start-notice" class="notice" role="status" hidden></div>
+      <div id="empty" class="empty"><p>先打开一篇文章，或粘贴正文。</p></div>
+      <div id="article" class="article-card" hidden>
+        <span id="source" class="eyebrow"></span><h3 id="article-title"></h3>
+        <p id="stats" class="muted small"></p><div id="warnings" class="warnings"></div>
+        <details id="start-preview"><summary>查看正文</summary><ol id="start-paragraphs" class="paragraphs"></ol></details>
+      </div>
+      <div id="busy" class="busy" hidden><span class="spinner" aria-hidden="true"></span><p id="progress" role="status"></p></div>
+      <button id="analyze" class="primary full" type="button" hidden>开始分析</button>
+      <button id="cancel" class="secondary full" type="button" hidden>取消分析</button>
+      <p id="send-scope" class="scope" hidden>点击分析后，标题和正文会发送至 TypeSafe。</p>
+      <div class="input-actions"><button id="read" class="secondary" type="button">读取当前文章</button><button id="paste-open" class="secondary" type="button" aria-expanded="false" aria-controls="manual">粘贴正文</button></div>
+      <form id="manual" hidden>
+        <label for="paste-title">标题（可选）</label><input id="paste-title" maxlength="200" placeholder="文章标题">
+        <label for="paste-text">正文</label><textarea id="paste-text" rows="8" maxlength="120001" placeholder="粘贴正文，至少 80 个字符"></textarea>
+        <button id="paste-submit" class="primary full" type="submit">导入正文</button>
+      </form>
+    </section>
+    <section id="result-page" class="page" aria-labelledby="result-heading" hidden>
+      <div class="section-head"><h2 id="result-heading" tabindex="-1">分析结果</h2><button id="export" class="text-button" type="button">导出</button></div>
+      <h3 id="result-title" class="result-title"></h3>
+      <p class="scope">只分析论证，不核查事实真伪。</p>
+      <div id="result-notice" class="notice" role="status" hidden></div>
+      <div id="partial" class="notice" hidden></div>
+      <div id="group-wrap" class="group-wrap" hidden><label for="group">分析分组</label><select id="group"></select><p class="muted small">评分只针对当前片段。</p></div>
+      <p id="narrative-note" class="notice" hidden>这段文字可能主要在叙述，评分未必适用。</p>
+      <div id="dimensions" class="dimensions"></div>
+      <h3 class="section-title">疑点</h3><div id="risks"></div>
+      <details id="uncertain" hidden><summary id="uncertain-title"></summary><div id="uncertain-risks"></div></details>
+      <details id="result-preview"><summary>查看原文</summary><div id="main-claim"></div><ol id="result-paragraphs" class="paragraphs"></ol></details>
+      <details id="analysis-details"><summary>分析详情</summary><p id="model-info" class="muted small"></p><p class="muted small">六项分别评分，不计算总分。模型把握表示判断的确定程度，不代表文章可信度。</p><button id="reanalyze" class="text-button" type="button">重新分析（会消耗用量）</button><button id="clear-cache" class="text-button" type="button">清除正文与缓存</button></details>
+      <div class="result-actions"><button id="new-article" class="primary full" type="button">分析另一篇</button></div>
+    </section>
+    <section id="settings-page" class="page" aria-labelledby="settings-heading" hidden>
+      <button id="settings-back" class="text-button back" type="button">← 返回</button>
+      <h2 id="settings-heading" tabindex="-1">设置</h2>
+      <div id="settings-notice" class="notice" role="status" hidden></div>
+      <form id="key-form">
+        <label for="key">TypeSafe / Jev API Key</label><input id="key" type="password" autocomplete="off" spellcheck="false" placeholder="填写 Key，无需 Bearer 前缀">
+        <p id="key-status" class="muted small">未填写 Key</p>
+        <label class="checkbox"><input id="remember" type="checkbox">在这台电脑记住 Key</label>
+        <p class="muted small">默认关闭浏览器后清除。勾选后保存在本机，不同步，也不额外加密。</p>
+        <label for="model">模型</label><select id="model"><option value="jev-1.13.0">Jev 1.13.0</option><option value="jev-latest">最新稳定版本</option></select>
+        <button class="primary full" type="submit">保存并返回</button><button id="forget" class="secondary full" type="button">移除 Key</button>
+      </form>
+      <a href="https://console.typesafe.ai/" target="_blank" rel="noopener noreferrer">申请 Key ↗</a>
+    </section>
+  </main>
+  <script type="module" src="panel.js"></script>
+</body>
+</html>
